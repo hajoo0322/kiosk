@@ -2,18 +2,28 @@ package kiosk.lv5;
 
 import kiosk.myexception.WrongNumberException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
+    List<MenuItem> whatType = new ArrayList<>();
+    String name;
 
-    public void selectMenu(String num) throws WrongNumberException {
+    public Menu(String name) {
+        this.name = name;
+    }
 
-        if (num.equals("1")) {
-            new MenuItem("새우버거",92,"게맛살,새우깡,마요네즈,근처에 있던잡초로 만든버거").showMenu();
-        } else if (num.equals("2")) {
-            new MenuItem("치킨버거", 85, "옆집KFC에서 튀기고 남은 짜투리를 뭉쳐서 만든버거").showMenu();
-        } else if (num.equals("3")) {
-            new MenuItem("삼촌손버거", 394, "삼촌이 한땀한땀 손으로 뭉쳐준 패티가 들어간 버거").showMenu();
-        } else {
-            throw new WrongNumberException();
+    public void setMenu(String num)  {
+         int i = Integer.parseInt(num);
+            whatType.get(i-1).showMenu();
+    }
+
+    public void showMenu(){
+        int i = 1;
+        for (MenuItem menuItem : whatType) {
+            System.out.print(i + ". ");
+            menuItem.showMenu();
+            i++;
         }
     }
 }

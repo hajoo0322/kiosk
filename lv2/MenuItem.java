@@ -1,8 +1,5 @@
 package kiosk.lv2;
 
-import kiosk.foods.CheeseBuger;
-import kiosk.foods.ChickenBuger;
-import kiosk.foods.ShrimpBuger;
 
 public class MenuItem {
     String name;
