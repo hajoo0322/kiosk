@@ -1,30 +1,19 @@
 package kiosk.lv4;
 
-import kiosk.myexception.WrongNumberException;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Menu {
     List<MenuItem> whatType = new ArrayList<>();
+    String name;
 
-    public boolean setMenu(String num) throws WrongNumberException {
-        int i=0;
-        try {
-            i = Integer.parseInt(num);
-        } catch (NumberFormatException e) {
-            System.out.println("문자를 입력하지 마시오");
-            return false;
-        }
+    public Menu(String name) {
+        this.name = name;
+    }
 
-        if (i > 3) {
-            throw new WrongNumberException();
-        } else {
+    public void setMenu(String num)  {
+         int i = Integer.parseInt(num);
             whatType.get(i-1).showMenu();
-        }
-        return true;
     }
 
     public void showMenu(){
