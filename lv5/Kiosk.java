@@ -25,7 +25,7 @@ public class Kiosk {
             } else if (num.equals("3")) {
                 menu3.showMenu();
             } else {
-                System.out.println("숫자가 너무 크오");
+                System.out.println("숫자가 잘못 입력됫소");
                 return true;
             }
 
@@ -37,7 +37,7 @@ public class Kiosk {
             } else if (num2.equals("3")) {
                 menu3.showMenu();
             } else {
-                System.out.println("숫자가 너무 크오");
+                System.out.println("숫자가 잘못 입력됫소");
                 return true;
             }
             menu1.setMenu(num2);
