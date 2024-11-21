@@ -30,17 +30,17 @@ public class Kiosk {
             }
 
             String num2 = sc.next();
-            if (num2.equals("1")) {
-                menu1.showMenu();
-            } else if (num2.equals("2")) {
-                menu2.showMenu();
-            } else if (num2.equals("3")) {
-                menu3.showMenu();
+            if (num.equals("1")) {
+                menu1.setMenu(num2) ;
+            } else if (num.equals("2")) {
+                menu2.setMenu(num2) ;
+            } else if (num.equals("3")) {
+                menu3.setMenu(num2) ;
             } else {
                 System.out.println("숫자가 잘못 입력됫소");
                 return true;
             }
-            menu1.setMenu(num2);
+
         return true;
     }
 
@@ -62,7 +62,7 @@ public class Kiosk {
         MenuItem c = new MenuItem("삼촌손버거", 394, "삼촌이 한땀한땀 손으로 뭉쳐준 패티가 들어간 버거");
         Collections.addAll(menu1.whatType, a, b, c);
 
-        MenuItem d = new MenuItem("콜라", 150, "마당에 장독대에 담가둔 간장");
+        MenuItem d = new MenuItem("콜라", 150, "뒷마당 장독대에 담가둔 간장");
         MenuItem e = new MenuItem("사이다", 90, "이게 진짜 사이다");
         MenuItem f = new MenuItem("진짜 사이다", 150, "스프라이트");
         Collections.addAll(menu2.whatType, d, e, f);
