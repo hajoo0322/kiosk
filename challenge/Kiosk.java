@@ -1,6 +1,7 @@
 package kiosk.challenge;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Kiosk {
     List<Menu> menupan = new ArrayList<>();
@@ -74,22 +75,20 @@ public class Kiosk {
 
 
     private void viewMenuAndCash() {
-        int i = 1;
-        for (Menu menu : menupan) {
-            System.out.println(i + ". " + menu.name);
-            i++;
-        }
+
+        AtomicInteger index = new AtomicInteger(1);
+        menupan.stream().
+                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
+
         System.out.println("4. 결제");
         System.out.println("5. 주문취소");
         System.out.println("0. 종료");
     }
 
     public void viewMenu() {
-        int i = 1;
-        for (Menu menu : menupan) {
-            System.out.println(i + ". " + menu.name);
-            i++;
-        }
+        AtomicInteger index = new AtomicInteger(1);
+        menupan.stream().
+                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
         System.out.println("0. 종료");
     }
 

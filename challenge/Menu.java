@@ -3,6 +3,7 @@ package kiosk.challenge;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Menu {
     List<MenuItem> whatType = new ArrayList<>();
@@ -21,12 +22,11 @@ public class Menu {
             }
 
     public void showMenu(){
-        int i = 1;
-        for (MenuItem menuItem : whatType) {
-            System.out.print(i + ". ");
-            menuItem.showMenu();
-            i++;
-        }
+        AtomicInteger index = new AtomicInteger(1);
+        whatType.stream().
+                forEach(a -> {System.out.print(index.getAndIncrement()+". ");
+                    a.showMenu();
+                });
         System.out.println("0. 뒤로가기");
     }
 
