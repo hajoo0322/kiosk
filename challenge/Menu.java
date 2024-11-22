@@ -1,5 +1,7 @@
 package kiosk.challenge;
 
+import kiosk.myexception.WrongNumberException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,8 +27,11 @@ public class Menu {
         System.out.println("0. 뒤로가기");
     }
 
-    public void setMenu(String num) {  //선택한 항목이 맞는지 확인하는역할
+    public void setMenu(String num) throws WrongNumberException {  //선택한 항목이 맞는지 확인하는역할
         int i = Integer.parseInt(num);
+        if (whatType.size() < i) {
+            throw new WrongNumberException();
+        }
         whatType.get(i - 1).showMenu();
         System.out.println("위 메뉴를 장바구니에 추가합니까?");
         System.out.println("1. 확인 2. 취소");

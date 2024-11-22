@@ -1,5 +1,7 @@
 package kiosk.challenge;
 
+import kiosk.myexception.WrongNumberException;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -45,30 +47,34 @@ public class Kiosk {
 
 
         String num2 = sc.next();
-        if (num2.equals("0")) {
-            System.out.println("뒤로갑니다");
-            return true;
-        } else if (num.equals("1")) {
-            menu1.setMenu(num2);
-            String num3 = sc.next();
-            if (num3.equals("1")){
-            wantBucket.addWant(menu1,num2);
+        try {
+            if (num2.equals("0")) {
+                System.out.println("뒤로갑니다");
+                return true;
+            } else if (num.equals("1")) {
+                menu1.setMenu(num2);
+                String num3 = sc.next();
+                if (num3.equals("1")) {
+                    wantBucket.addWant(menu1, num2);
+                }
+            } else if (num.equals("2")) {
+                menu2.setMenu(num2);
+                String num3 = sc.next();
+                if (num3.equals("1")) {
+                    wantBucket.addWant(menu2, num2);
+                }
+            } else if (num.equals("3")) {
+                menu3.setMenu(num2);
+                String num3 = sc.next();
+                if (num3.equals("1")) {
+                    wantBucket.addWant(menu3, num2);
+                }
+            } else {
+                System.out.println("숫자가 잘못 입력됫소");
+                return true;
             }
-        } else if (num.equals("2")) {
-            menu2.setMenu(num2);
-            String num3 = sc.next();
-            if (num3.equals("1")){
-                wantBucket.addWant(menu2,num2);
-            }
-        } else if (num.equals("3")) {
-            menu3.setMenu(num2);
-            String num3 = sc.next();
-            if (num3.equals("1")){
-                wantBucket.addWant(menu3,num2);
-            }
-        } else {
-            System.out.println("숫자가 잘못 입력됫소");
-            return true;
+        } catch (WrongNumberException e) {
+            System.out.println(e.getMessage());
         }
         return true;
     }
