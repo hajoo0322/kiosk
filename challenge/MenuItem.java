@@ -1,4 +1,4 @@
-package kiosk.lv5;
+package kiosk.challenge;
 
 public class MenuItem{
    private String name;
@@ -10,7 +10,14 @@ public class MenuItem{
         this.price = price;
         this.discription = discription;
     }
-    //만약 할인행사 같은걸 해야한다면 price에 getter를 추가하자
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void showMenu() {
         System.out.println(name + "||"+ " $"+price+" || "+ discription);
