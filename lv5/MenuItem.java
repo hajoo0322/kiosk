@@ -10,7 +10,7 @@ public class MenuItem{
         this.price = price;
         this.discription = discription;
     }
-
+    //만약 할인행사 같은걸 해야한다면 price에 getter를 추가하자
     public void showMenu() {
         System.out.println(name + "||"+ " $"+price+" || "+ discription);
     }

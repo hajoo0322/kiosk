@@ -1,7 +1,5 @@
 package kiosk.lv5;
 
-import kiosk.myexception.WrongNumberException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +23,6 @@ public class Menu {
             menuItem.showMenu();
             i++;
         }
+        System.out.println("0. 뒤로가기");
     }
 }

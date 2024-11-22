@@ -28,9 +28,11 @@ public class Kiosk {
                 System.out.println("숫자가 잘못 입력됫소");
                 return true;
             }
-
             String num2 = sc.next();
-            if (num.equals("1")) {
+            if (num2.equals("0")){
+                System.out.println("뒤로갑니다");
+              return true;
+            } else if (num.equals("1")) {
                 menu1.setMenu(num2) ;
             } else if (num.equals("2")) {
                 menu2.setMenu(num2) ;
@@ -40,10 +42,8 @@ public class Kiosk {
                 System.out.println("숫자가 잘못 입력됫소");
                 return true;
             }
-
         return true;
     }
-
 
     public void viewMenu() {
         int i = 1;
@@ -72,7 +72,6 @@ public class Kiosk {
         MenuItem i = new MenuItem("훈제 닭다리", 89.9, "훈제한 닭다리");
         Collections.addAll(menu3.whatType, g, h, i);
     }
-
 
     public boolean isThisZero(String num) {
         if (num.equals("0")) {
