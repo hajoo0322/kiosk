@@ -11,7 +11,7 @@ public class Kiosk {
     Menu menu3 = new Menu("주전부리");
     Menu wantBucket = new Menu("장바구니");
 
-    public boolean startKiosk() {
+    public boolean startKiosk() {                 // kiosk의 흐름을 담당하는메서드
         if (wantBucket.wantItems.isEmpty()) {
             viewMenu();
         } else {
@@ -74,25 +74,7 @@ public class Kiosk {
     }
 
 
-    private void viewMenuAndCash() {
-
-        AtomicInteger index = new AtomicInteger(1);
-        menupan.stream().
-                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
-
-        System.out.println("4. 결제");
-        System.out.println("5. 주문취소");
-        System.out.println("0. 종료");
-    }
-
-    public void viewMenu() {
-        AtomicInteger index = new AtomicInteger(1);
-        menupan.stream().
-                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
-        System.out.println("0. 종료");
-    }
-
-    public void setMenu() {
+    public void setMenu() {    // 정보를 객체에 담아두는 초기세팅을 담당하는메서드
         Collections.addAll(menupan, menu1, menu2, menu3);
 
         MenuItem a = new MenuItem("새우버거", 92, "게맛살,새우깡,마요네즈,근처에 있던잡초로 만든버거");
@@ -111,9 +93,27 @@ public class Kiosk {
         Collections.addAll(menu3.whatType, g, h, i);
     }
 
-    public boolean isThisZero(String num) {
+    public void viewMenu() {  // 메뉴를 보여주기위한 담당
+        AtomicInteger index = new AtomicInteger(1);
+        menupan.stream().
+                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
+        System.out.println("0. 종료");
+    }
+
+    private void viewMenuAndCash() { //장바구니가 존재할때 메뉴와결제항목을 보여주는 담당
+
+        AtomicInteger index = new AtomicInteger(1);
+        menupan.stream().
+                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
+
+        System.out.println("4. 결제");
+        System.out.println("5. 주문취소");
+        System.out.println("0. 종료");
+    }
+
+    public boolean isThisZero(String num) {  //프로그램의 종료를 담당하는 메서드
         if (num.equals("0")) {
-            System.out.println("시스템 캇~!");
+            System.out.println("시스템 끝~!");
             return true;
         }
         return false;

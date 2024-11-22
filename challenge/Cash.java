@@ -15,7 +15,7 @@ public class Cash {
             return false;
         } else if (num.equals("2")) {
             double saleSum = Sale.SPRINGSTAGE4.saleCalculate(sum);
-            System.out.println("스프링4기 특별할인 200% 결제금액은 $ "+ saleSum+" 입니다.");
+            System.out.println("스프링4기 특별할인 :) 200% 결제금액은 $ "+ saleSum+" 입니다.");
             System.out.println("주문해주셔서 감사합니다 :)");
             return false;
         } else if (num.equals("3")) {

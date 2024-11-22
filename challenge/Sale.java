@@ -2,7 +2,7 @@ package kiosk.challenge;
 
 public enum Sale {
     SOLIDER{
-        @Override
+        @Override //
         public double saleCalculate(double sum) {
             return sum-(sum*0.8);
         }
@@ -13,7 +13,6 @@ public enum Sale {
             return sum+(sum*2);
         }
     };
-
-
+//코드 확장성을 향상시켜서 완전히 다른 할인항목이 생겨도 간단히 추가할수있다.
     public abstract double saleCalculate(double sum);
 }
