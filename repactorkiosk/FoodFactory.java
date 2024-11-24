@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class FoodFactory {
-    List<Menu> menupan = new ArrayList<>();
+    List<Menu> menuPan = new ArrayList<>();
     Menu menu1 = new Menu("햄버거");
     Menu menu2 = new Menu("마실거");
     Menu menu3 = new Menu("주전부리");
 
-    public  FoodFactory() {    // 정보를 객체에 담아두는 초기세팅을 담당하는메서드
-        Collections.addAll(menupan, menu1, menu2, menu3);
+    public FoodFactory() {    // 정보를 객체에 담아두는 초기세팅을 담당하는메서드
+        Collections.addAll(menuPan, menu1, menu2, menu3);
 
         MenuItem a = new MenuItem("새우버거", 92, "게맛살,새우깡,마요네즈,근처에 있던잡초로 만든버거");
         MenuItem b = new MenuItem("치킨버거", 85, "옆집KFC에서 튀기고 남은 짜투리를 뭉쳐서 만든버거");

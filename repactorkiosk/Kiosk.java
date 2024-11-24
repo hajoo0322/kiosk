@@ -2,19 +2,17 @@ package kiosk.repactorkiosk;
 
 import kiosk.myexception.WrongNumberException;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Kiosk {
-    List<Menu> menupan;
+    List<Menu> menuPan;
     Scanner sc = new Scanner(System.in);
-    Menu wantBucket = new Menu("장바구니");
+    Request wantBucket = new Request();
 
     public Kiosk(List<Menu> menupan) { //생성자로 메뉴판 주입당하기
-        this.menupan = menupan;
+        this.menuPan = menupan;
     }
 
     public boolean startKiosk() { // kiosk의 흐름을 담당하는메서드
@@ -43,7 +41,7 @@ public class Kiosk {
             }
         }
 
-        menupan.get(number1-1).showMenu();
+        menuPan.get(number1-1).showMenu();
         String num2 = sc.next();
         int number2 = isNumber(num2 , 2);
 
@@ -51,11 +49,11 @@ public class Kiosk {
                 System.out.println("뒤로갑니다");
                 return true;
             }
-        menupan.get(number1-1).setMenu(number2);
+        menuPan.get(number1-1).setMenu(number2);
             String num3 = sc.next();
         int number3 = isNumber(num3, 3);
         if (number3 == 1) {
-            wantBucket.addWant(menupan.get(number1-1), number2);
+            wantBucket.addWant(menuPan.get(number1-1), number2);
         } else {
             System.out.println("뒤로간다.");
             return true;
@@ -66,7 +64,7 @@ public class Kiosk {
 
     public void viewMenu() {  // 메뉴를 보여주기위한 담당
         AtomicInteger index = new AtomicInteger(1);
-        menupan.stream().
+        menuPan.stream().
                 forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
         System.out.println("0. 종료");
     }
@@ -74,11 +72,11 @@ public class Kiosk {
     private void viewMenuAndCash() { //장바구니가 존재할때 메뉴와결제항목을 보여주는 담당
 
         AtomicInteger index = new AtomicInteger(1);
-        menupan.stream().
+        menuPan.stream().
                 forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
 
-        System.out.println((menupan.size()+1) + ". 결제");
-        System.out.println((menupan.size()+2) + ". 주문취소" );
+        System.out.println((menuPan.size()+1) + ". 결제");
+        System.out.println((menuPan.size()+2) + ". 주문취소" );
         System.out.println("0. 종료");
     }
 
@@ -95,16 +93,16 @@ public class Kiosk {
             i = Integer.parseInt(number);
             if (index == 1) {
                 if (wantBucket.wantItems.isEmpty()) {
-                    if (i > menupan.size()) {
+                    if (i > menuPan.size()) {
                         throw new WrongNumberException();
                     }
                 } else {
-                    if (i > menupan.size()+2) {
+                    if (i > menuPan.size()+2) {
                         throw new WrongNumberException();
                     }
                 }
             } else if (index == 2) {
-                if (i > menupan.get(i - 1).whatType.size()) {
+                if (i > menuPan.get(i - 1).whatType.size()) {
                     throw new WrongNumberException();
                 }
             } else {

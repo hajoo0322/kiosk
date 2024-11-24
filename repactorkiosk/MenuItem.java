@@ -19,7 +19,7 @@ public class MenuItem{
         return name;
     }
 
-    public void showMenu() {
+    public void showItem() {
         System.out.println(name + "||"+ " $"+price+" || "+ discription);
     }
 }
