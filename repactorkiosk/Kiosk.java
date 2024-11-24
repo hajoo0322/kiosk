@@ -33,7 +33,10 @@ public class Kiosk {
 
         if (!wantBucket.wantItems.isEmpty()) {
             if (number1 == 4) {
-                return wantBucket.showSelectMenu();
+                double sum = wantBucket.showSelectMenu();
+                String num4 = sc.next();
+                int number4 = isNumber(num4, 3);
+                return wantBucket.cashMode(number4,sum);
             } else if (number1 == 5) {
                 wantBucket.areYouDelete();
                 return true;
