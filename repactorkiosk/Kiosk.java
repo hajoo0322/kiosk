@@ -1,8 +1,11 @@
-package kiosk.challenge;
+package kiosk.repactorkiosk;
 
 import kiosk.myexception.WrongNumberException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Kiosk {
@@ -19,65 +22,42 @@ public class Kiosk {
         } else {
             viewMenuAndCash();
         }
+
         String num = sc.next();
-        if (isThisZero(num)) {
+        int number1 = isNumber(num , 1);
+        if (isThisZero(number1)) {
+            System.out.println("시스템 끝~!");
             return false;
         }
 
         if (!wantBucket.wantItems.isEmpty()) {
-            if (num.equals("4")) {
+            if (number1 == 4) {
                 return wantBucket.showSelectMenu();
-            } else if (num.equals("5")) {
+            } else if (number1 == 5) {
                 wantBucket.areYouDelete();
                 return true;
             }
         }
 
-        if (num.equals("1")) {
-            menu1.showMenu();
-        } else if (num.equals("2")) {
-            menu2.showMenu();
-        } else if (num.equals("3")) {
-            menu3.showMenu();
-        } else {
-            System.out.println("숫자가 잘못 입력됫소");
-            return true;
-        }
-
-
+        menupan.get(number1-1).showMenu();
         String num2 = sc.next();
-        try {
-            if (isThisZero(num2)) {
+        int number2 = isNumber(num2 , 2);
+
+            if (isThisZero(number2)) {
                 System.out.println("뒤로갑니다");
                 return true;
-            } else if (num.equals("1")) {
-                menu1.setMenu(num2);
-                String num3 = sc.next();
-                if (num3.equals("1")) {
-                    wantBucket.addWant(menu1, num2);
-                }
-            } else if (num.equals("2")) {
-                menu2.setMenu(num2);
-                String num3 = sc.next();
-                if (num3.equals("1")) {
-                    wantBucket.addWant(menu2, num2);
-                }
-            } else if (num.equals("3")) {
-                menu3.setMenu(num2);
-                String num3 = sc.next();
-                if (num3.equals("1")) {
-                    wantBucket.addWant(menu3, num2);
-                }
-            } else {
-                System.out.println("숫자가 잘못 입력됫소");
-                return true;
             }
-        } catch (WrongNumberException e) {
-            System.out.println(e.getMessage());
+        menupan.get(number1-1).setMenu(number2);
+            String num3 = sc.next();
+        int number3 = isNumber(num3, 3);
+        if (number3 == 1) {
+            wantBucket.addWant(menupan.get(number1), number2);
+        } else {
+            System.out.println("뒤로간다.");
+            return true;
         }
         return true;
     }
-
 
     public void setMenu() {    // 정보를 객체에 담아두는 초기세팅을 담당하는메서드
         Collections.addAll(menupan, menu1, menu2, menu3);
@@ -111,17 +91,45 @@ public class Kiosk {
         menupan.stream().
                 forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
 
-        System.out.println("4. 결제");
-        System.out.println("5. 주문취소");
+        System.out.println((menupan.size()+1) + ". 결제");
+        System.out.println((menupan.size()+2) + ". 주문취소" );
         System.out.println("0. 종료");
     }
 
-    public boolean isThisZero(String num) {  //프로그램의 종료를 담당하는 메서드
-        if (num.equals("0")) {
-            System.out.println("시스템 끝~!");
+    public boolean isThisZero(int num) {  //프로그램의 종료를 담당하는 메서드
+        if (num == 0) {
             return true;
         }
         return false;
+    }
+
+    public int isNumber(String number, int index) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(number);
+            if (index == 1) {
+                if (wantBucket.wantItems.isEmpty()) {
+                    if (i > menupan.size()) {
+                        throw new WrongNumberException();
+                    }
+                } else {
+                    if (i > menupan.size()+2) {
+                        throw new WrongNumberException();
+                    }
+                }
+            } else if (index == 2) {
+                if (i > menupan.get(i - 1).whatType.size()) {
+                    throw new WrongNumberException();
+                }
+            } else {
+                if (!(i == 1 || i == 2)) {
+                    throw new WrongNumberException();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return i ;
     }
 }
 
