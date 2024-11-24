@@ -3,8 +3,8 @@ package kiosk.repactorkiosk;
 public class Main {
 
     public static void main(String[] args) {
-        Kiosk kiosk = new Kiosk();
-        kiosk.setMenu();
+        FoodFactory foodFactory = new FoodFactory();
+        Kiosk kiosk = new Kiosk(foodFactory.menupan);//푸드팩토리 클래스에서 메뉴 초기화 작업
         boolean goStop = true;           //kosikstart 메서드의 반복을 조절한다.
         while(goStop) {
             goStop = kiosk.startKiosk();
