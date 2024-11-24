@@ -51,7 +51,7 @@ public class Kiosk {
             String num3 = sc.next();
         int number3 = isNumber(num3, 3);
         if (number3 == 1) {
-            wantBucket.addWant(menupan.get(number1), number2);
+            wantBucket.addWant(menupan.get(number1-1), number2);
         } else {
             System.out.println("뒤로간다.");
             return true;

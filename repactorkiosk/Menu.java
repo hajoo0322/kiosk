@@ -35,7 +35,7 @@ public class Menu {
 
     public void addWant(Menu menu, int num) {//위의 메서드에서 확인을 받앗을때 실행해주는역할
         wantItems.add(menu.whatType.get(num - 1));
-        System.out.println(menu.whatType.get(num - 1).getName() + "추가 됬습니다");
+        System.out.println(menu.whatType.get(num - 1).getName() + "추가 됐습니다");
     }
 
     public boolean showSelectMenu() { //결제를 안내하고 결제를 호출하기 위한 역할
