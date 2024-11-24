@@ -7,11 +7,6 @@ import java.util.Scanner;
 public class Request {
     List<MenuItem> wantItems = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-    Menu menu2;
-
-    public void showMenu() {
-        menu2.showMenu();
-    }
 
     public void addWant(Menu menu, int num) {//확인을 받앗을때 실행해주는역할
         wantItems.add(menu.whatType.get(num - 1));
