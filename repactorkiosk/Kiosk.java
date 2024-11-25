@@ -20,7 +20,7 @@ public class Kiosk {
 
         String num = sc.next();
         int number1 = isNumber(num , 1);
-        if (isThisZero(number1)) {
+        if (number1 == 0) {
             System.out.println("시스템 끝~!");
             return false;
         }
@@ -41,7 +41,7 @@ public class Kiosk {
         String num2 = sc.next();
         int number2 = isNumber(num2 , 2);
 
-            if (isThisZero(number2)) {
+            if (number2 == 0) {
                 System.out.println("뒤로갑니다");
                 return true;
             }
@@ -67,13 +67,6 @@ public class Kiosk {
             System.out.println((menuPan.size()+2) + ". 주문취소" );
         }
         System.out.println("0. 종료");
-    }
-
-    public boolean isThisZero(int num) {  //프로그램의 종료를 담당하는 메서드
-        if (num == 0) {
-            return true;
-        }
-        return false;
     }
 
     public int isNumber(String number, int index) {
