@@ -16,11 +16,7 @@ public class Kiosk {
     }
 
     public boolean startKiosk() { // kiosk의 흐름을 담당하는메서드
-        if (wantBucket.wantItems.isEmpty()) {
-            viewMenu();
-        } else {
-            viewMenuAndCash();
-        }
+        viewMenuAndCash();
 
         String num = sc.next();
         int number1 = isNumber(num , 1);
@@ -61,22 +57,15 @@ public class Kiosk {
         return true;
     }
 
-
-    public void viewMenu() {  // 메뉴를 보여주기위한 담당
-        AtomicInteger index = new AtomicInteger(1);
-        menuPan.stream().
-                forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
-        System.out.println("0. 종료");
-    }
-
     private void viewMenuAndCash() { //장바구니가 존재할때 메뉴와결제항목을 보여주는 담당
 
         AtomicInteger index = new AtomicInteger(1);
         menuPan.stream().
                 forEach(a -> System.out.println(index.getAndIncrement()+". "+a.name));
-
-        System.out.println((menuPan.size()+1) + ". 결제");
-        System.out.println((menuPan.size()+2) + ". 주문취소" );
+        if (!wantBucket.wantItems.isEmpty()) {
+            System.out.println((menuPan.size()+1) + ". 결제");
+            System.out.println((menuPan.size()+2) + ". 주문취소" );
+        }
         System.out.println("0. 종료");
     }
 
