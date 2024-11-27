@@ -10,7 +10,7 @@ public enum Sale {
     , SPRINGSTAGE4 {
         @Override
         public double saleCalculate(double sum) {
-            return sum+(sum*2);
+            return sum+(sum*2); //동기를 생각한 마음에 나온 할인 맞습니다!
         }
     };
 //코드 확장성을 향상시켜서 완전히 다른 할인항목이 생겨도 간단히 추가할수있다.

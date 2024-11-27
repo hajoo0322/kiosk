@@ -10,12 +10,12 @@ public class Cash {
         String num = sc.next();
         if (num.equals("1")) {
             double saleSum = Sale.SOLIDER.saleCalculate(sum);
-            System.out.println("군인할인 80% 결제금액은 $ "+saleSum+" 입니다");
+            System.out.println("군인할인 80% 결제금액은 $ " + String.format("%.1f", saleSum) + " 입니다");
             System.out.println("주문해주셔서 감사합니다 :)");
             return false;
         } else if (num.equals("2")) {
             double saleSum = Sale.SPRINGSTAGE4.saleCalculate(sum);
-            System.out.println("스프링4기 특별할인 :) 200% 결제금액은 $ "+ saleSum+" 입니다.");
+            System.out.println("스프링4기 특별할인 :) 200% 결제금액은 $ "+ String.format("%.1f", saleSum)+" 입니다.");
             System.out.println("주문해주셔서 감사합니다 :)");
             return false;
         } else if (num.equals("3")) {
